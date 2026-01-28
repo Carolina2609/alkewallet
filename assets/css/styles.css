@@ -1,0 +1,45 @@
+body {
+   
+    background-image: url("../img/dinero.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+:root {
+    --color-primario: #183527;   /* colores principales  */
+    --color-secundario: #58987a; 
+    --color-acento: #0fa00f;     
+
+}
+.btn-principal {
+    background-color: green !important;
+    color: white;
+}
+
+
+.btn-principal:hover {
+    background-color: #1558b0;
+}
+
+/* Botón depósito */
+.btn-deposito {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.btn-deposito:hover {
+    background-color: #146c43;
+}
+
+/* Botón enviar dinero */
+.btn-envio {
+    background-color: var(--color-acento);
+    color: #000;
+}
+
+.btn-envio:hover {
+    background-color: #e0a800;
+}

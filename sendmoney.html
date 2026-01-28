@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar dinero - Alke Wallet</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+
+        <h4 class="text-center mb-3">📤 Enviar dinero</h4>
+
+        <p class="text-center">
+            Saldo actual: <strong>$<span id="saldo">0</span></strong>
+        </p>
+
+        <form id="envioForm">
+            <div class="mb-3">
+                <label class="form-label">Monto a enviar</label>
+                <input type="number" id="montoEnvio" class="form-control" min="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-envio w-100">
+                Enviar
+            </button>
+        </form>
+
+        <p id="mensajeEnvio" class="text-center mt-3"></p>
+
+        <a href="menu.html" class="btn btn-link w-100 mt-2">Volver al menú</a>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
