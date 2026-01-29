@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
-    // =====================
+    // ============================
     // LOGIN
-    // =====================
+    // ============================
     $("#loginForm").on("submit", function (e) {
         e.preventDefault();
 
-        const emailCorrecto = "usuario@alkewallet.cl";
+        const emailCorrecto = "camunoz@alkewallet.cl";
         const passwordCorrecta = "123456";
 
         const emailIngresado = $("#email").val();
@@ -19,9 +19,9 @@ $(document).ready(function () {
         }
     });
 
-    // =====================
-    // SALDO (MENU / DEPOSITO / ENVIO)
-    // =====================
+    // ============================
+    // SALDO GENERAL
+    // ============================
     if ($("#saldo").length) {
 
         if (!localStorage.getItem("saldo")) {
@@ -31,9 +31,9 @@ $(document).ready(function () {
         $("#saldo").text(localStorage.getItem("saldo"));
     }
 
-    // =====================
+    // ============================
     // DEPÓSITO
-    // =====================
+    // ============================
     $("#depositoForm").on("submit", function (e) {
         e.preventDefault();
 
@@ -42,6 +42,8 @@ $(document).ready(function () {
 
         let nuevoSaldo = saldoActual + monto;
         localStorage.setItem("saldo", nuevoSaldo);
+
+        guardarMovimiento("Depósito", monto);
 
         $("#saldo").text(nuevoSaldo);
         $("#mensajeDeposito")
@@ -52,9 +54,9 @@ $(document).ready(function () {
         $("#montoDeposito").val("");
     });
 
-    // =====================
+    // ============================
     // ENVÍO
-    // =====================
+    // ============================
     $("#envioForm").on("submit", function (e) {
         e.preventDefault();
 
@@ -72,6 +74,8 @@ $(document).ready(function () {
         let nuevoSaldo = saldoActual - monto;
         localStorage.setItem("saldo", nuevoSaldo);
 
+        guardarMovimiento("Envío", monto);
+
         $("#saldo").text(nuevoSaldo);
         $("#mensajeEnvio")
             .text("Envío realizado con éxito ✅")
@@ -81,5 +85,56 @@ $(document).ready(function () {
         $("#montoEnvio").val("");
     });
 
+    // ============================
+    // MOSTRAR HISTORIAL
+    // ============================
+    if ($("#listaMovimientos").length) {
+        let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
+
+        if (movimientos.length === 0) {
+            $("#listaMovimientos").html(
+                '<li class="list-group-item text-center text-muted">Sin movimientos aún</li>'
+            );
+        } else {
+        movimientos.forEach(mov => {
+            $("#listaMovimientos").prepend(`
+             <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+                <strong>${mov.tipo}</strong>
+                <span>$${mov.monto}</span>
+            </div>
+            <small class="text-muted">${mov.fecha}</small>
+        </li>
+    `);
+});
+
+        }
+    }
+
+});
+
+
+//  HISTORIAL
+function guardarMovimiento(tipo, monto) {
+    let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
+
+    let fecha = new Date().toLocaleString("es-CL");
+
+    movimientos.push({
+        tipo: tipo,
+        monto: monto,
+        fecha: fecha
+    });
+
+    localStorage.setItem("movimientos", JSON.stringify(movimientos));
+}
+// ============================
+// CERRAR SESIÓN
+
+$("#logoutBtn").on("click", function () {
+    localStorage.removeItem("saldo");
+    localStorage.removeItem("movimientos");
+
+    window.location.href = "login.html";
 });
 

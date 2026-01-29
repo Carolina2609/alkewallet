@@ -1,13 +1,46 @@
-body {
-   
+.login-bg {
     background-image: url("../img/dinero.avif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Times New Roman', Times, serif;
-    
 }
+.menu-bg {
+    background-image: url("../img/menu.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* FONDO DEPOSITO */
+.transactions-bg {
+    background-image: url("../img/transacciones.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* FONDO ENVIO */
+.envio-bg {
+    background-image: url("../img/envio.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+}   
+.btn-transactions {
+    background-color: aquamarine;
+   color: rgb(1, 4, 6);
+   
+}   
+    
+
 :root {
     --color-primario: #183527;   /* colores principales  */
     --color-secundario: #58987a; 
